@@ -1,11 +1,14 @@
 import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
-import monacoEditorPlugin from 'vite-plugin-monaco-editor';
+import monacoEditorPluginModule from 'vite-plugin-monaco-editor';
+
+const monacoEditorPlugin: typeof monacoEditorPluginModule =
+  (monacoEditorPluginModule as any).default ?? monacoEditorPluginModule;
 
 export default defineConfig({
   plugins: [
     solidPlugin(),
-    (monacoEditorPlugin as any).default({
+    monacoEditorPlugin({
       languageWorkers: ['editorWorkerService', 'json', 'typescript', 'html', 'css'],
     }),
   ],
