@@ -2,6 +2,7 @@
   "name": "s3explorer",
   "version": "1.0.0",
   "description": "S3 Explorer – Desktop S3 client",
+  "author": "astrixgame",
   "main": "dist-electron/electron/main.js",
   "scripts": {
     "dev": "concurrently -k \"vite\" \"wait-on tcp:5173 && cross-env IS_DEV=true electron .\"",
