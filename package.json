@@ -31,6 +31,7 @@
   "build": {
     "appId": "com.s3explorer.app",
     "productName": "S3 Explorer",
+    "icon": "build/icon.png",
     "directories": {
       "output": "release"
     },
