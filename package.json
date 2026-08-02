@@ -1,0 +1,59 @@
+{
+  "name": "s3explorer",
+  "version": "1.0.0",
+  "description": "S3 Explorer – Desktop S3 client",
+  "main": "dist-electron/electron/main.js",
+  "scripts": {
+    "dev": "concurrently -k \"vite\" \"wait-on tcp:5173 && cross-env IS_DEV=true electron .\"",
+    "build": "tsc -p tsconfig.node.json && vite build",
+    "dist": "npm run build && electron-builder",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.600.0",
+    "@aws-sdk/lib-storage": "^3.600.0",
+    "monaco-editor": "^0.56.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^31.1.0",
+    "electron-builder": "^24.13.3",
+    "solid-js": "^1.8.17",
+    "typescript": "^5.4.5",
+    "vite": "^5.3.1",
+    "vite-plugin-monaco-editor": "^1.1.0",
+    "vite-plugin-solid": "^2.10.2",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.s3explorer.app",
+    "productName": "S3 Explorer",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Utility"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    }
+  }
+}
